@@ -1,0 +1,42 @@
+---
+title: "Actividad 122"
+author: "Santiago Fernandez"
+date: "2023-08-07"
+output:
+  pdf_document: default
+  html_document: default
+  word_document: default
+---
+```{r setup,  echo=FALSE}
+library(readxl)
+HorseRacingResults <- read_excel("C:/santiago/UNIVERSIDAD/QUINTO SEMESTRE/Probabiliad/HorseRacingResults.xlsx", 
+    sheet = "Horse Racing Results")
+View(HorseRacingResults)
+```
+
+```{r, echo=FALSE}
+summarytools::descr(HorseRacingResults$PrizeMoney)
+
+```
+
+
+Los resultados indica que el dinero del premio de las carreras examinadas entran entre 660000.00 y 28000000 presentando un valor medio de 967000.00 y la media siendo 1479445.10 sugiere está sesgada o asimétrica hacia la derecha (positivamente sesgada),  indica que hay algunos valores extremadamente altos en el lado derecho de la distribución que están empujando la media hacia arriba. En otras palabras, hay algunos premios muy altos que están aumentando el valor promedio, pero la mayoría de los valores están agrupados en el extremo inferior. Y un coeficiente de variacion del 146% sugiere que la dispersión de los valores es considerable en relación con la media. Esto podría indicar que hay una amplia gama de premios en el conjunto de datos, con algunos valores que pueden ser significativamente mayores que la media,posibles valores atípicos y un mayor nivel de riesgo o incertidumbre en los resultados de las carreras de caballos. Podemos mencionar tambien que la asimetira al ser 8.26 la asimetría positiva sugiere que hay valores atípicos en el extremo superior derecho de la distribución. Esto significa que hay algunos premios muy altos que están aumentando el promedio y estirando la cola de la distribución hacia la derecha.El valor de la kurtosis es 75.51,lo que sugiere que la distribución de los premios en el conjunto de datos tiene colas muy pesadas y una forma puntiaguda, indicando una mayor concentración de valores extremadamente altos.
+
+```{r, echo=FALSE}
+summarytools::descr(HorseRacingResults$HorseAge)
+```
+
+Los resultados indica que la edad de los caballos de las carreras examinadas examinadas entran entre 2 años y 12 años presentando un valor medio de 5 años y la media siendo 5.25 sugiere que la distribución de edades podría estar sesgada hacia edades más altas y/o podría haber algunos valores atípicos en las edades de los caballos en el conjunto de datos. Y un coeficiente de variacion del 29%  sugiere que las edades de los caballos en el conjunto de datos tienen una variabilidad moderada en relación con la media. Esto podría indicar cierta uniformidad en las edades o una relativa estabilidad en las mediciones. Podemos mencionar tambien que la asimetira al ser 0.48 lsugiere que la distribución de edades de los caballos tiende a ser ligeramente asimétrica hacia edades más jóvenes. Esto podría indicar una concentración de edades más bajas con algunos valores más altos que están afectando la asimetría. El valor de la kurtosis es -0.23 una kurtosis negativa indica que la distribución de edades tiene colas más ligeras (menos pesadas) que las de una distribución normal. Esto significa que hay menos valores extremos en las colas de la distribución.
+
+```{r, echo=FALSE}
+summarytools::freq(HorseRacingResults$Country, cumul = FALSE)
+```
+
+lo que podemos observar es que hay 17 tipos diferentes de paises de los cuales provienen los caballos en los datos siendo la nacionalidad australiana mas alta con 13179 caballos, lo que representa aproximadamente el 48.8% del total, tambien siendo esta la moda. Le siguen Nueva Zelanda (25.23%), Irlanda (11.77%), Gran Bretaña (6.74%) y Francia (2.50%), apartir de aca los otros paises tienen una distribución mas hetereogena.
+
+```{r, echo=FALSE}
+summarytools::freq(HorseRacingResults$Track, cumul = FALSE)
+summarytools::freq(HorseRacingResults$Surface, cumul = FALSE)
+```
+
+Como podemos obervar la mayoría de las carreras de caballos en la muestra se corren en Sha Tin, lo que sugiere que la pista Sha Tin tienen una presencia significativamente mayor que la pista Happy Valley, Sha Tin tiene 63.57% de apariciones mientras que Happy Valley se queda con restante 36.43%, siendo tambien Sha Tin la moda.

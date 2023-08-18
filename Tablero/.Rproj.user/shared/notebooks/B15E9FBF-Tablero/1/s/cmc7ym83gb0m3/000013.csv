@@ -1,0 +1,19 @@
+"0","library(dplyr)"
+"0",""
+"0","# Agrupar los datos por edad y calcular el tiempo promedio"
+"0","menores_tiempos_por_edad <- HorseRacingResults %>%"
+"0","  group_by(HorseAge) %>%"
+"0","  summarise(TiempoPromedio = mean(RaceTime))"
+"0",""
+"0","# Encontrar la edad con el menor tiempo promedio"
+"0","edad_menor_tiempo <- menores_tiempos_por_edad %>%"
+"0","  filter(TiempoPromedio == min(TiempoPromedio)) %>%"
+"0","  pull(HorseAge)"
+"0",""
+"0","cat(""La edad con los menores tiempos promedio es:"", edad_menor_tiempo, ""años"")"
+"0",""
+"0",""
+"2","Error: Incomplete expression: 
+cat(""La edad con los menores tiempos promedio es:"", edad_menor_tiempo, ""años"")
+
+"

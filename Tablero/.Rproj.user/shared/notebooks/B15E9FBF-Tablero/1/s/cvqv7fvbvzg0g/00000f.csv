@@ -1,0 +1,23 @@
+"0","summarytools::descr(HorseRacingResults$Distance)"
+"1","Descriptive Statistics  
+HorseRacingResults$Distance  
+N: 27008  
+
+                    Distance
+----------------- ----------
+             Mean    1401.67
+          Std.Dev     276.07
+              Min    1000.00
+               Q1    1200.00
+           Median    1400.00
+               Q3    1650.00
+              Max    2400.00
+              MAD     296.52
+              IQR     450.00
+               CV       0.20
+         Skewness       0.60
+      SE.Skewness       0.01
+         Kurtosis      -0.09
+          N.Valid   27008.00
+        Pct.Valid     100.00
+"

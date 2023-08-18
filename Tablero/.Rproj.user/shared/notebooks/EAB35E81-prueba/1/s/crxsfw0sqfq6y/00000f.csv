@@ -1,0 +1,46 @@
+"0","summarytools::descr(HorseRacingResults$PrizeMoney)"
+"1","Descriptive Statistics  
+HorseRacingResults$PrizeMoney  
+N: 27008  
+
+                     PrizeMoney
+----------------- -------------
+             Mean    1479445.10
+          Std.Dev    2162109.35
+              Min     660000.00
+               Q1     920000.00
+           Median     967000.00
+               Q3    1450000.00
+              Max   28000000.00
+              MAD     455158.20
+              IQR     530000.00
+               CV          1.46
+         Skewness          8.26
+      SE.Skewness          0.01
+         Kurtosis         75.51
+          N.Valid      27008.00
+        Pct.Valid        100.00
+"
+"0","summarytools::descr(HorseRacingResults$RaceTime)"
+"1","Descriptive Statistics  
+HorseRacingResults$RaceTime  
+N: 27008  
+
+                    RaceTime
+----------------- ----------
+             Mean      83.59
+          Std.Dev      18.20
+              Min      54.69
+               Q1      70.15
+           Median      82.08
+               Q3      99.88
+              Max     153.09
+              MAD      18.67
+              IQR      29.73
+               CV       0.22
+         Skewness       0.64
+      SE.Skewness       0.01
+         Kurtosis      -0.04
+          N.Valid   27008.00
+        Pct.Valid     100.00
+"

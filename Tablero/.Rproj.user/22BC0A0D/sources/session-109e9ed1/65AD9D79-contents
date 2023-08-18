@@ -1,0 +1,170 @@
+---
+title: "Tablero Santiago Fernandez"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(readxl)
+HorseRacingResults <- read_excel("C:/santiago/UNIVERSIDAD/QUINTO SEMESTRE/Probabiliad/HorseRacingResults.xlsx", 
+    sheet = "Horse Racing Results")
+View(HorseRacingResults)
+```
+
+Column {data-width=625 .tabset}
+-----------------------------------------------------------------------
+
+### Tipo de superficie
+
+```{r, echo=FALSE}
+a=rep("Dirt", 3316)
+b=rep("Gress", 23692)
+data=c(a,b)
+t=table(data)
+lbs=c("Dirt", "Grees")
+pct=round(t/sum(t)*100)
+labs=paste(lbs, pct)
+labs=paste(labs, "%", sep = " ") 
+pie(t, labels=labs, main=" Tipo de superficie")
+```
+
+### Lugar
+
+```{r, echo=FALSE}
+a=rep("Happy Valley", 9839)
+b=rep("Sha Tin", 17169)
+data=c(a,b)
+t=table(data)
+lbs=c("Happy Valley", "Sha Tin")
+pct=round(t/sum(t)*100)
+labs=paste(lbs, pct)
+labs=paste(labs, "%", sep = " ") 
+pie(t, labels=labs, main="Proporcion de Carreras en Happy Valley y Sha Tin")
+```
+
+### Caballos ganadores por edad
+
+```{r, echo=FALSE}
+library(dplyr)
+library(ggplot2)
+
+# Filtrar los datos donde FinalPlace sea igual a 1
+datos_filtrados <- HorseRacingResults %>%
+  filter(FinalPlace == 1)
+
+# Contar las ocurrencias de cada edad
+conteo_edades <- datos_filtrados %>%
+  count(HorseAge)
+
+# Crear el gráfico de barras con el eje X en edades enteras
+ggplot(conteo_edades, aes(x = HorseAge, y = n)) +
+  geom_bar(stat = "identity", fill = "#6b9493") +
+  labs(title = "Caballos ganadores por edad",
+       x = "Edad del Caballo", y = "Cantidad de Ganadores") +
+  scale_x_continuous(breaks = unique(conteo_edades$HorseAge)) +  # Establecer los intervalos de etiquetas del eje X
+  theme_minimal()
+
+```
+
+### Montos de premios
+
+```{r, echo=FALSE}
+
+options(scipen = 999)
+h1=hist(HorseRacingResults$PrizeMoney, main = "Montos de Premios en Resultados de Carreras de Caballos ", xlab = "Dinero del premio en HKD", ylab="frecuencias absolutas", labels=TRUE, col="#6b9493", ylim = c(0,27000))
+abline(v=3,col="#f6b915", lwd=4)
+
+```
+
+### Analisis de variables
+
+**Tipo de superficie:** Al analizar las frecuencias del tipo de superficie, se destaca la predominancia de carreras en el tipo de pista "Gress" en comparación con "Dirt". Esta diferencia sugiere que "Gress" tiene una presencia significativamente mayor en la muestra de tipo de superficie en las carreras, "Gress" tiene 87.72% de apariciones mientras que "Dirt" se queda con restante 12.28%, siendo tambien "Gress" la moda.
+
+**Lugar:** Como podemos obervar la mayoría de las carreras de caballos en la muestra se corren en Sha Tin, lo que sugiere que la pista Sha Tin tienen una presencia significativamente mayor que la pista Happy Valley, Sha Tin tiene 63.57% de apariciones mientras que Happy Valley se queda con restante 36.43%, siendo tambien Sha Tin la moda.
+
+**Caballos ganadores por edad:** La mayoría de los ganadores pertenecen a edades comprendidas entre 3 y 6 años, con una concentración significativa en este rango.
+A medida que los caballos envejecen, la cantidad de ganadores disminuye notablemente. Esto es evidente a partir de los 7 años, donde la cantidad de ganadores disminuye de manera más pronunciada.
+Los caballos más jóvenes (de 2 años) y más viejos (de 8 a 10 años) tienen una presencia mucho menor en términos de victorias en carreras. Esto puede estar relacionado con factores como la capacidad física, el entrenamiento y la experiencia de los caballos en carreras.
+
+**Montos de premios:** Los montos de premios en las carreras varían ampliamente, desde 660,000 hasta 28,000,000. Aunque el valor medio es 967,000, la presencia de premios muy altos aunque no sean muchos infla la media, mientras que la mayoría de los premios están en el extremo inferior. Esto sugiere un sesgo positivo.
+
+La alta dispersión (coeficiente de variación del 146%) indica una amplia gama de premios y posibles valores atípicos, aumentando el riesgo y la incertidumbre en los resultados de las carreras.
+
+La alta kurtosis (75.51) señala colas pesadas y una concentración de valores extremadamente altos, indicando una distribución puntiaguda en la distribución de premios.
+
+Column {data-width=325}
+-----------------------------------------------------------------------
+
+### Tiempos record de Carrera por Distancia
+
+```{r, echo=FALSE}
+
+library(DT)
+
+# Your table of data
+data <- data.frame(
+  Distance = c(1000, 1200, 1400, 1600, 1650, 1800, 2000, 2200, 2400),
+  RaceTime = c(54.69, 67.27, 79.92, 92.64, 96.75, 105.25, 118.81, 133.47, 144.77)
+)
+
+# Create an interactive DataTable
+datatable(data, options = list(pageLength = 10))
+
+
+
+```
+
+
+Column {data-width=50}
+-----------------------------------------------------------------------
+
+### Primer puesto
+
+```{r, echo=FALSE}
+
+valueBox("16 carreras, ID 21905", icon = "fa-solid fa-trophy")
+ 
+```
+
+### Segundo puesto
+
+```{r, echo=FALSE}
+
+valueBox("10 carreras, ID 23519", icon = "fa-solid fa-2")
+ 
+```
+
+### Tercer puesto
+
+```{r, echo=FALSE}
+
+valueBox("10 carreras, ID 25939", icon = "fa-solid fa-3")
+ 
+```
+
+### Cuarto puesto
+
+```{r, echo=FALSE}
+
+valueBox("7 carreras, ID 22020", icon = "fa-solid fa-4")
+ 
+```
+
+### Quinto puesto
+
+```{r, echo=FALSE}
+
+valueBox("7 carreras, ID 22317", icon = "fa-solid fa-5")
+ 
+```
+
+### Sexto puesto
+
+```{r, echo=FALSE}
+
+valueBox("7 carreras, ID 23463", icon = "fa-solid fa-6")
+ 
+```

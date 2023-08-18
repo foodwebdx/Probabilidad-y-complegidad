@@ -1,0 +1,4 @@
+"0","plot(HorseRacingResults$HorseAge, HorseRacingResults$RaceTime, "
+"0","     main = ""Race Time vs Horse Age"","
+"0","     xlab = ""Horse Age"", ylab = ""Race Time"","
+"0","     col = ""#447270"", pch = 19)"

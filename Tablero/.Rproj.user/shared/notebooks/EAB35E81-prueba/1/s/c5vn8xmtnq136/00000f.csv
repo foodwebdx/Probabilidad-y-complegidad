@@ -1,0 +1,24 @@
+"0","summarytools::freq(HorseRacingResults$Track, cumul = FALSE)"
+"1","Frequencies  
+HorseRacingResults$Track  
+Type: Character  
+
+                      Freq   % Valid   % Total
+------------------ ------- --------- ---------
+      Happy Valley    9839     36.43     36.43
+           Sha Tin   17169     63.57     63.57
+              <NA>       0                0.00
+             Total   27008    100.00    100.00
+"
+"0","summarytools::freq(HorseRacingResults$Surface, cumul = FALSE)"
+"1","Frequencies  
+HorseRacingResults$Surface  
+Type: Character  
+
+               Freq   % Valid   % Total
+----------- ------- --------- ---------
+       Dirt    3316     12.28     12.28
+      Gress   23692     87.72     87.72
+       <NA>       0                0.00
+      Total   27008    100.00    100.00
+"

@@ -1,0 +1,5 @@
+"0","library(flexdashboard)"
+"0","library(readxl)"
+"0","HorseRacingResults <- read_excel(""C:/santiago/UNIVERSIDAD/QUINTO SEMESTRE/Probabiliad/HorseRacingResults.xlsx"", "
+"0","    sheet = ""Horse Racing Results"")"
+"0","View(HorseRacingResults)"
